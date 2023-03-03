@@ -1,19 +1,21 @@
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { NavBar } from './components/Navbar';
-import { About } from './pages/About';
-import { Contact } from './pages/Contact';
-import Home from './pages/Home';
+import { Bookmark } from './pages/Bookmark';
+import { Home } from './pages/Home';
+import { Karaoke } from './pages/Karaoke';
+import { Login } from './pages/Login';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar></NavBar>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={isLoggedIn ? <Home /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/karaoke" element={<Karaoke />} />
+          <Route path="/bookmark" element={<Bookmark />} />
         </Routes>
       </BrowserRouter>
     </div>
