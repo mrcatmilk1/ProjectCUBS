@@ -1,38 +1,128 @@
-.App {
-  text-align: center;
+nav {
+  background-color: navy;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav ul {
+  display: flex;
+  margin-right: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
+.active {
+  text-decoration: underline;
+}
+
+.pbody {
+  font-family: "Montserrat", sans-serif;
   min-height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background: #222222;
+  background: -webkit-linear-gradient(to top, #232526, #414345);
+}
+.pbody a {
+  color: inherit;
+}
+.pbody a:not(:hover) {
+  text-decoration: none;
+}
+.pbody #link-a-me {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  height: 60px;
+  width: 60px;
+  background-size: cover;
+  z-index: 1;
+  animation: pop-in 120s ease-out;
+}
+.pbody .content {
+  overflow: hidden;
+  flex-grow: 1;
+  height: calc(100% - 80px);
+}
+.pbody .content .lyrics {
+  padding: 50vh 0;
+  min-height: calc(100vh - 80px);
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  text-align: center;
+  transition: all 0.25s;
+  position: relative;
+}
+.pbody .content .lyrics > div {
+  position: relative;
+  font-size: 40px;
+  line-height: 80px;
+  color: #666;
+  transition: all 0.25s;
+}
+.pbody .content .lyrics > div:before {
+  content: attr(note);
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+.pbody .content .lyrics > div.highlighted {
+  color: #fff;
+  font-size: 48px;
+}
+.pbody .player {
+  z-index: 10;
+  background: #F9F9F9;
+  color: #000;
+  min-height: 80px;
+  max-height: 80px;
+  display: flex;
+  flex-direction: row;
+}
+.pbody .player .left {
+  width: 80px;
+  background-size: cover;
+}
+.pbody .player .right {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.pbody .player .right .top {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-left: 10px;
+}
+.pbody .player .right .top .song {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.pbody .player .right .bottom {
+  display: flex;
+}
+.pbody .player .right .bottom video {
+  flex-grow: 1;
+  height: 32px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes pop-in {
+  0%, 95% {
+      transform: translateY(100%);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+      transform: translateY(0%);
   }
 }
